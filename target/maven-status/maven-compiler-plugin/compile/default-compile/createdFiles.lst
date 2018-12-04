@@ -1,0 +1,9 @@
+br/com/anteros/nosql/spring/web/resource/AbstractNoSQLResourceRest.class
+br/com/anteros/nosql/spring/web/converter/NoSQLJacksonBaseMixin.class
+br/com/anteros/nosql/spring/web/converter/AnterosNoSQLForceLazyHttpMessageConverter.class
+br/com/anteros/nosql/spring/web/support/AsyncNoSQLRequestInterceptor.class
+br/com/anteros/nosql/spring/web/converter/AnterosNoSQLHttpMessageConverter.class
+br/com/anteros/nosql/spring/web/converter/NoSQLGroupExpressionMixin.class
+br/com/anteros/nosql/spring/web/support/OpenNoSQLSessionInViewFilter.class
+br/com/anteros/nosql/spring/web/config/AbstractSpringWebAppInitializer.class
+br/com/anteros/nosql/spring/web/config/AnterosSpringMvcWithNoSQLConfiguration.class
