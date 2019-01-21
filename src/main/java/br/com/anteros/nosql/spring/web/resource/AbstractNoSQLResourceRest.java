@@ -51,7 +51,7 @@ import br.com.anteros.nosql.persistence.session.service.NoSQLService;
  * @param <T> Tipo
  * @param <ID> ID
  */
-@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 @SuppressWarnings("unchecked")
 public abstract class AbstractNoSQLResourceRest<T, ID> {
 
@@ -68,7 +68,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.PUT })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false, transactionManager="transactionManagerNoSQL")
 	public <S extends T> S save(@RequestBody S entity) throws Exception {
 		return getService().save(entity);
 	}
@@ -76,7 +76,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/", method = { RequestMethod.POST, RequestMethod.PUT })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false, transactionManager="transactionManagerNoSQL")
 	public <S extends T> Iterable<S> saveAll(Iterable<S> entities) {
 		return getService().save(entities);
 	}
@@ -84,7 +84,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public Optional<T> findById(@PathVariable(value = "id") String id) {
 		ID castID = (ID) id;
 		return getService().findById(castID);
@@ -93,7 +93,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/exists/{id}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public boolean existsById(@PathVariable String id) {
 		ID castID = (ID) id;
 		return getService().existsById(castID);
@@ -102,7 +102,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(method = RequestMethod.GET, value = "/findAll", params = { "page", "size" })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public Page<T> findAll(@RequestParam("page") int page, @RequestParam("size") int size) {
 		PageRequest pageRequest = new PageRequest(page, size);
 		return getService().findAll(pageRequest);
@@ -111,7 +111,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(method = RequestMethod.GET, value = "/findWithPage", params = { "rsql", "page", "size" })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public Page<T> findAll(@RequestParam("rsql") String rsql, @RequestParam("page") int page,
 			@RequestParam("size") int size) {
 		PageRequest pageRequest = new PageRequest(page, size);
@@ -122,7 +122,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(method = RequestMethod.GET, value = "/findAll")
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public Iterable<T> findById(@RequestParam(required = true) List<String> ids) {
 		List<ID> newIds = new ArrayList<ID>();
 		for (String id : ids) {
@@ -135,7 +135,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/findWithFilter", params = { "page", "size" }, method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public Page<T> find(@RequestBody Filter filter, @RequestParam(value = "page", required = true) int page,
 			@RequestParam(value = "size", required = true) int size) throws Exception {
 		PageRequest pageRequest = new PageRequest(page, size);
@@ -152,7 +152,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/count", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public long count() {
 		return getService().count();
 	}
@@ -160,7 +160,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false, transactionManager="transactionManagerNoSQL")
 	public void removeById(@PathVariable(value = "id") String id) {
 		ID castID = (ID) id;
 		getService().removeById(castID);
@@ -169,7 +169,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = false, transactionManager="transactionManagerNoSQL")
 	public void remove(@RequestParam(required = true) List<String> ids) {
 		for (String id : ids) {
 			ID castID = (ID) id;
@@ -180,7 +180,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/findOneByExample", method = { RequestMethod.POST })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public <S extends T> Optional<S> findOne(@RequestBody S example) {
 		return getService().findOne(Example.of(example));
 	}
@@ -188,7 +188,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/findByExample", method = { RequestMethod.POST })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public <S extends T> Iterable<S> find(@RequestBody S example) {
 		return getService().find(Example.of(example));
 	}
@@ -196,7 +196,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/findByExample", method = { RequestMethod.POST }, params = { "sort" })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public <S extends T> Iterable<S> find(@RequestBody S example, @PathVariable(value = "sort") String sort) {
 		return getService().find(Example.of(example), Sort.parse(sort));
 	}
@@ -204,7 +204,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/findByExample", method = { RequestMethod.POST }, params = { "sort", "page", "size" })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public <S extends T> Page<S> find(@RequestBody S example, @RequestParam(value = "page") int page,
 			@RequestParam(value = "size") int size) {
 		return getService().find(Example.of(example), new PageRequest(page, size));
@@ -213,7 +213,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/countByExample", method = { RequestMethod.POST })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public <S extends T> long count(@RequestBody S example) {
 		return getService().count(Example.of(example));
 	}
@@ -221,7 +221,7 @@ public abstract class AbstractNoSQLResourceRest<T, ID> {
 	@RequestMapping(value = "/existsByExample", method = { RequestMethod.POST })
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true)
+	@Transactional(rollbackFor = Throwable.class, propagation = Propagation.REQUIRED, readOnly = true, transactionManager="transactionManagerNoSQL")
 	public <S extends T> boolean exists(@RequestBody S example) {
 		return getService().exists(Example.of(example));
 	}
