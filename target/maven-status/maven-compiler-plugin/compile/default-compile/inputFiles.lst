@@ -1,9 +1,0 @@
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/support/OpenNoSQLSessionInViewFilter.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/converter/AnterosNoSQLForceLazyHttpMessageConverter.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/converter/NoSQLGroupExpressionMixin.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/support/AsyncNoSQLRequestInterceptor.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/converter/NoSQLJacksonBaseMixin.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/converter/AnterosNoSQLHttpMessageConverter.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/resource/AbstractNoSQLResourceRest.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/config/AnterosSpringMvcWithNoSQLConfiguration.java
-/Volumes/dadosmac/projetos/workspace_versatil/Anteros-NoSql-Spring-Web/src/main/java/br/com/anteros/nosql/spring/web/config/AbstractSpringWebAppInitializer.java
