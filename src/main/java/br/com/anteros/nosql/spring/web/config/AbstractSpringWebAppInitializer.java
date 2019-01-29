@@ -13,11 +13,14 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 import br.com.anteros.nosql.spring.web.support.OpenNoSQLSessionInViewFilter;
 
+
 public abstract class AbstractSpringWebAppInitializer implements WebApplicationInitializer{
 	
+	private static final String ANTEROS_CORS_FILTER = "anterosCorsFilter";
 	private static final String SPRING_SECURITY_FILTER_CHAIN = "springSecurityFilterChain";
 	private static final String DISPATCHER = "dispatcher";
 	private static final String OPEN_NOSQL_SESSION_IN_VIEW_FILTER = "OpenNoSQLSessionInViewFilter";
+
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
@@ -64,21 +67,28 @@ public abstract class AbstractSpringWebAppInitializer implements WebApplicationI
 		servletContext.addListener(new ContextLoaderListener(appContext));
 
 		addListener(servletContext);
+		
+		
+		
 		addServlet(servletContext, appContext);
+		
 
 		
 		Dynamic servlet = servletContext.addServlet(DISPATCHER, new DispatcherServlet(appContext));
 		servlet.addMapping("/");
 		servlet.setLoadOnStartup(1);
 		
-		FilterRegistration.Dynamic openSQLSessionInViewFilterChain = servletContext.addFilter(OPEN_NOSQL_SESSION_IN_VIEW_FILTER,
-				OpenNoSQLSessionInViewFilter.class);
-		openSQLSessionInViewFilterChain.addMappingForUrlPatterns(null, false, "/*");
-		
+
+		FilterRegistration.Dynamic filter = servletContext.addFilter(ANTEROS_CORS_FILTER, AnterosCorsFilter.class);
+		filter.addMappingForUrlPatterns(null, false, "/*");
 
 		FilterRegistration.Dynamic springSecurityFilterChain = servletContext.addFilter(SPRING_SECURITY_FILTER_CHAIN,
 				DelegatingFilterProxy.class);
 		springSecurityFilterChain.addMappingForUrlPatterns(null, false, "/*");
+		
+		FilterRegistration.Dynamic openSQLSessionInViewFilterChain = servletContext.addFilter(OPEN_NOSQL_SESSION_IN_VIEW_FILTER,
+				OpenNoSQLSessionInViewFilter.class);
+		openSQLSessionInViewFilterChain.addMappingForUrlPatterns(null, false, "/*");
 
 		
 	}
