@@ -370,5 +370,71 @@
 				</repository>
 			</repositories>
 		</profile>
+		<profile>
+			<id>local</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.bsc.maven</groupId>
+							<artifactId>maven-processor-plugin</artifactId>
+							<version>2.2.4</version>
+							<executions>
+								<execution>
+									<id>process</id>
+									<goals>
+										<goal>process</goal>
+									</goals>
+									<phase>generate-sources</phase>
+									<configuration>
+										<outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
+										<processors>
+											<processor>br.com.anteros.persistence.apt.AnterosPersistenceAnnotationProcessor</processor>
+										</processors>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<version>3.1</version>
+							<configuration>
+								<target>${java.versao}</target>
+								<source>${java.versao}</source>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-source-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>attach-sources</id>
+									<goals>
+										<goal>jar</goal>
+									</goals>
+								</execution>
+							</executions>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>attach-javadocs</id>
+									<goals>
+										<goal>jar</goal>
+									</goals>
+
+								</execution>
+							</executions>
+							<configuration>
+								<additionalparam>-Xdoclint:none</additionalparam>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
 	</profiles>
 </project>
