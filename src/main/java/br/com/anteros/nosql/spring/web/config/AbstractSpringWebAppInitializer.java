@@ -89,7 +89,7 @@ public abstract class AbstractSpringWebAppInitializer implements WebApplicationI
 		FilterRegistration.Dynamic openSQLSessionInViewFilterChain = servletContext.addFilter(OPEN_NOSQL_SESSION_IN_VIEW_FILTER,
 				OpenNoSQLSessionInViewFilter.class);
 		openSQLSessionInViewFilterChain.addMappingForUrlPatterns(null, false, "/*");
-
+		appContext.close();
 		
 	}
 	

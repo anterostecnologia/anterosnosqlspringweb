@@ -77,6 +77,7 @@ public abstract class AnterosSpringMvcWithNoSQLConfiguration extends WebMvcConfi
 		FilterRegistration.Dynamic openSQLSessionInViewFilterChain = servletContext.addFilter(OPEN_NOSQL_SESSION_IN_VIEW_FILTER,
 				OpenNoSQLSessionInViewFilter.class);
 		openSQLSessionInViewFilterChain.addMappingForUrlPatterns(null, false, "/*");
+		appContext.close();
 	}
 
 	public abstract Class<?>[] registerFirstConfigurationClasses();
