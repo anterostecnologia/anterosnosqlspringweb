@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.anteros</groupId>
 	<artifactId>Anteros-NoSql-Spring-Web</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 
 
 	<properties>
@@ -61,25 +61,25 @@
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-Core</artifactId>
-			<version>[1.0.0,)</version>
+			<version>[1.2.6,)</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-NoSql-Persistence</artifactId>
-			<version>[1.0.0,)</version>
+			<version>[1.0.7,)</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-NoSql-Persistence-Serialization</artifactId>
-			<version>[1.0.0,)</version>
+			<version>[1.0.5,)</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-NoSql-Spring</artifactId>
-			<version>[1.0.0,)</version>
+			<version>[1.0.4,)</version>
 		</dependency>
 		
 		<dependency>
