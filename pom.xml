@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.anteros</groupId>
 	<artifactId>Anteros-NoSql-Spring-Web</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 
 
 	<properties>
@@ -55,33 +55,33 @@
 			</roles>
 		</developer>
 	</developers>
-	
-	
+
+
 	<dependencies>
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-Core</artifactId>
 			<version>[1.2.6,)</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-NoSql-Persistence</artifactId>
 			<version>[1.0.7,)</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-NoSql-Persistence-Serialization</artifactId>
 			<version>[1.0.5,)</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>br.com.anteros</groupId>
 			<artifactId>Anteros-NoSql-Spring</artifactId>
 			<version>[1.0.4,)</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -93,7 +93,7 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.9.8</version>
 		</dependency>
-		
+
 		<!-- PROVIDED -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -159,6 +159,32 @@
 			<version>3.3.2</version>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>local-REPO</id>
+			<url>http://vps4657.publiccloud.com.br:8082/artifactory/libs-release-local</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>local-REPO</id>
+			<url>http://vps4657.publiccloud.com.br:8082/artifactory/libs-release-local</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<profiles>
 		<profile>
